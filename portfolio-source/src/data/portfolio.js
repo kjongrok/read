@@ -65,8 +65,8 @@ export const projects = [
   {
     id: 'traffic-agent',
     index: '02',
-    title: 'Intelligent Traffic Agent',
-    subtitle: 'Vision-to-Text 지능형 고속도로 관제',
+    title: '지능형 교통 관제 시스템',
+    subtitle: 'Vision-to-Text 기반 고속도로 관제',
     period: '2026.07.04 — 2026.07.07',
     role: 'AI Application Developer',
     visual: 'traffic',
@@ -86,8 +86,8 @@ export const projects = [
   {
     id: 'traffic-anomaly',
     index: '03',
-    title: 'Traffic Anomaly Detection',
-    subtitle: 'CCTV 교통량 이상탐지·예측 대시보드',
+    title: 'CCTV 교통량 이상탐지·예측',
+    subtitle: '실시간 교통 분석 대시보드',
     period: '2026.06.21 — 2026.07.01',
     role: 'Deep Learning Developer',
     visual: 'vision',
@@ -107,8 +107,8 @@ export const projects = [
   {
     id: 'flight-delay',
     index: '04',
-    title: 'Flight Delay Prediction',
-    subtitle: '항공편 지연 예측 머신러닝',
+    title: '항공편 지연 예측',
+    subtitle: '머신러닝 기반 지연 가능성 분석',
     period: '2026.06.21 — 2026.06.24',
     role: 'Machine Learning Developer',
     image: flightMatrix,
@@ -129,8 +129,8 @@ export const projects = [
   {
     id: 'bidmatch-flask',
     index: '05',
-    title: 'BidMatch — Flask Prototype',
-    subtitle: '나라장터 맞춤 공고 자동 수집·메일 알림',
+    title: '맞춤 공고 자동 수집·메일 알림 프로토타입',
+    subtitle: 'Flask 기반 BidMatch 초기 버전',
     period: '2026.06.14 — 2026.06.20',
     role: 'Project Leader · Full-stack Developer',
     image: flaskDashboard,

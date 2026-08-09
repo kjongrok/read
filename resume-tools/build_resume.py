@@ -435,7 +435,7 @@ def build_resume():
     add_bullet(document, "Spring Boot 기반 인증·회원·기업정보·고객센터·알림 API와 React 사용자 흐름 구현")
     add_bullet(document, "FastAPI·BGE-M3·LLM·Spring 규칙 판정을 분리한 근거 기반 RAG 기능 설계")
     add_bullet(document, "Flyway 충돌, 외부 API 장애, 비정상 AI 출력에 대한 검증, fallback과 상태 관리 적용")
-    add_bullet(document, "5인 팀 Project Leader로 API 계약, 기능 범위, 테스트와 시연 자료를 조율")
+    add_bullet(document, "5인 팀 프로젝트 리더(PL)로 API 계약, 기능 범위, 테스트와 시연 자료를 조율")
 
     add_section_title(document, "TECHNICAL SKILLS")
     add_skill_table(document)
@@ -445,7 +445,7 @@ def build_resume():
     add_bullet(document, "30개 이상 부서의 OA 시스템 요구사항을 수집하고 하드웨어·소프트웨어 구성 검토와 도입 지원")
     add_bullet(document, "연간 300건 이상의 장애·사용자 요청을 처리하고 운영 매뉴얼, 정책, Q&A 대응 체계 정리")
     add_bullet(document, "신규 시스템 도입과 개편 과정에서 비IT 직군 대상 교육 자료를 제작하고 40회 이상 교육 진행")
-    add_bullet(document, "코로나19 기간 전자결재·원격 OA 접근 체계 전환을 지원하며 중단 없는 업무 환경 유지")
+    add_bullet(document, "코로나19 기간 전자결재·원격 OA 접근 체계 전환 과정에서 사용자 안내와 장애 대응 지원")
 
     add_section_title(document, "EDUCATION")
     add_entry_heading(document, "KG IT BANK · 핀테크 서비스를 위한 풀스택 개발자 양성 과정", "2024.08 – 2025.02")
@@ -471,21 +471,26 @@ def build_resume():
     add_bullet(document, "5개 저장소 118개 비병합 커밋 기여, AI pytest 242건 및 Backend·Frontend 최종 빌드/테스트 통과")
     add_body_paragraph(document, "기술: Spring Boot · FastAPI · React · PostgreSQL · Redis · BGE-M3 · RAG · LLM · Flyway", size=8.2, color=TEAL, space_after=2.0)
 
-    add_entry_heading(document, "Intelligent Traffic Agent · Vision-to-Text 지능형 교통 관제", "2026.07.04 – 2026.07.07 · 개인")
+    add_entry_heading(document, "지능형 교통 관제 시스템", "2026.07.04 – 2026.07.07 · 개인")
     add_bullet(document, "YOLOv8 차량 탐지 결과와 Supabase 로그 조회를 LLM Function Calling으로 연결")
     add_bullet(document, "날짜 환각과 도구 호출 오류를 시간 파서·DB 결과 검증·대체 모델 경로로 완화하고 Word 관제 일지 생성")
 
-    add_entry_heading(document, "Traffic Anomaly Detection · CCTV 교통량 이상탐지·예측", "2026.06.21 – 2026.07.01 · 개인")
+    add_entry_heading(document, "CCTV 교통량 이상탐지·예측", "2026.06.21 – 2026.07.01 · 개인")
     add_bullet(document, "YOLOv8 탐지, LSTM Autoencoder 이상탐지, ITS CCTV, Supabase 로그를 Streamlit 화면으로 통합")
     add_bullet(document, "입력 차원 불일치와 영상 지연을 reshape, 프레임 스킵, 표시 영상 리사이징으로 해결")
 
-    add_entry_heading(document, "Flight Delay Prediction · 항공편 지연 예측", "2026.06.21 – 2026.06.24 · 개인")
+    add_entry_heading(document, "항공편 지연 예측", "2026.06.21 – 2026.06.24 · 개인")
     add_bullet(document, "약 25만 건 데이터를 전처리하고 XGBoost 등 모델을 비교해 불균형 데이터의 지연 Recall 중심으로 평가")
     add_bullet(document, "전처리·모델을 scikit-learn Pipeline으로 패키징해 Streamlit에 연결, Recall 65%·ROC-AUC 0.785 기록")
 
-    add_entry_heading(document, "BidMatch Flask Prototype · 맞춤 공고 자동 수집·메일 알림", "2026.06.14 – 2026.06.20 · 팀 PL")
+    add_entry_heading(document, "맞춤 공고 자동 수집·메일 알림 프로토타입", "2026.06.14 – 2026.06.20 · 팀 PL")
     add_bullet(document, "Flask·React로 OAuth/JWT 인증, Gmail 알림, Gemini 공고 요약, APScheduler 배치를 연결")
     add_bullet(document, "UTC/KST 발송 시간 차이를 Asia/Seoul 기준으로 보정하고 최종 Spring·FastAPI 프로젝트로 구조 확장")
+
+    add_entry_heading(document, "Spike · Spring Boot 기반 금융 서비스", "2025.01 – 2025.02 · 팀 프로젝트")
+    add_bullet(document, "Spring Security와 BCrypt를 적용한 회원가입·로그인, 역할별 접근 제어와 마이페이지 구현")
+    add_bullet(document, "관리자 사용자 CRUD·페이징과 보이스피싱 의심 계좌 신고·검토·상태 변경 흐름 구현")
+    add_body_paragraph(document, "기술: Java 17 · Spring Boot 2.7 · JSP · JPA · MyBatis · Oracle DB", size=8.2, color=TEAL, space_after=2.0)
 
     add_section_title(document, "PORTFOLIO")
     add_body_paragraph(document, "GitHub  https://github.com/kjongrok", bold_prefix="GitHub", size=8.8, space_after=0.8)
