@@ -1,8 +1,12 @@
 import bidmatchImage from '../assets/projects/bidmatch-ai-solution.png'
 import bidmatchArchitecture from '../assets/projects/bidmatch-architecture.png'
+import bidmatchPreview from '../assets/projects/bidmatch-final-preview.mp4'
+import deepLearningPreview from '../assets/projects/deep-learning-preview.mp4'
 import flaskDashboard from '../assets/projects/flask-bidmatch-dashboard.png'
 import flaskPreview from '../assets/projects/bidmatch-flask-preview.mp4'
 import flightMatrix from '../assets/projects/flight-confusion-matrix.png'
+import llmPreview from '../assets/projects/llm-preview.mp4'
+import machineLearningPreview from '../assets/projects/machine-learning-preview.mp4'
 
 export const profile = {
   name: '김종록',
@@ -40,9 +44,10 @@ export const projects = [
     featured: true,
     title: 'BidMatch',
     subtitle: 'AI 기반 공공입찰 맞춤 추천·자격진단 서비스',
-    period: '2026.07.15 — 2026.08.05',
+    period: '2026.07.09 — 2026.08.07',
     role: 'Project Leader · Backend & AI Application',
     image: bidmatchImage,
+    video: bidmatchPreview,
     secondaryImage: bidmatchArchitecture,
     visual: 'image',
     tone: 'green',
@@ -57,9 +62,8 @@ export const projects = [
     outcome: 'Backend 테스트, 사용자·관리자 프론트 빌드, AI pytest 242건을 최종 검증했습니다.',
     tags: ['Spring Boot', 'FastAPI', 'React', 'PostgreSQL', 'Redis', 'BGE-M3', 'RAG'],
     links: [
-      { label: 'Backend', url: 'https://github.com/aiHuman1Team/back-end' },
-      { label: 'AI', url: 'https://github.com/aiHuman1Team/ai' },
-      { label: 'Frontend', url: 'https://github.com/aiHuman1Team/front-end' },
+      { label: 'Project README', url: 'https://github.com/aiHuman1Team' },
+      { label: 'Live Service', url: 'http://minsworkspace.ddns.net' },
     ],
   },
   {
@@ -67,8 +71,9 @@ export const projects = [
     index: '02',
     title: '지능형 교통 관제 시스템',
     subtitle: 'Vision-to-Text 기반 고속도로 관제',
-    period: '2026.07.04 — 2026.07.07',
+    period: '2026.07.02 — 2026.07.07',
     role: 'AI Application Developer',
+    video: llmPreview,
     visual: 'traffic',
     tone: 'blue',
     description: '실시간 CCTV 분석 결과와 과거 교통 데이터를 LLM이 직접 조회하고 자연어로 브리핑하는 관제 에이전트입니다.',
@@ -88,8 +93,9 @@ export const projects = [
     index: '03',
     title: 'CCTV 교통량 이상탐지·예측',
     subtitle: '실시간 교통 분석 대시보드',
-    period: '2026.06.21 — 2026.07.01',
+    period: '2026.06.25 — 2026.07.01',
     role: 'Deep Learning Developer',
+    video: deepLearningPreview,
     visual: 'vision',
     tone: 'violet',
     description: '실시간 CCTV 영상에서 차량을 탐지하고 교통 특징을 분석해 이상 상태와 다음 시점 밀집도를 표시하는 프로젝트입니다.',
@@ -109,9 +115,10 @@ export const projects = [
     index: '04',
     title: '항공편 지연 예측',
     subtitle: '머신러닝 기반 지연 가능성 분석',
-    period: '2026.06.21 — 2026.06.24',
+    period: '2026.06.18 — 2026.06.24',
     role: 'Machine Learning Developer',
     image: flightMatrix,
+    video: machineLearningPreview,
     visual: 'image-contain',
     tone: 'orange',
     description: 'DACON 항공 운항 데이터를 활용해 지연 가능성을 예측하고 결과와 주요 영향 요인을 보여주는 Streamlit 프로젝트입니다.',
@@ -131,7 +138,7 @@ export const projects = [
     index: '05',
     title: '맞춤 공고 자동 수집·메일 알림 프로토타입',
     subtitle: 'Flask 기반 BidMatch 초기 버전',
-    period: '2026.06.14 — 2026.06.20',
+    period: '2026.06.11 — 2026.06.17',
     role: 'Project Leader · Full-stack Developer',
     image: flaskDashboard,
     video: flaskPreview,
