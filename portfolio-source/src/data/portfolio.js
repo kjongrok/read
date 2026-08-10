@@ -8,6 +8,9 @@ import flightMatrix from '../assets/projects/flight-confusion-matrix.png'
 import llmPreview from '../assets/projects/llm-preview.mp4'
 import machineLearningPreview from '../assets/projects/machine-learning-preview.mp4'
 
+/** 현재 배포 기준 경로에 포함된 프로젝트 보고서 URL을 반환합니다. */
+const reportUrl = (fileName) => `${import.meta.env.BASE_URL}reports/${fileName}`
+
 export const profile = {
   name: '김종록',
   role: 'Backend & AI Application Developer',
@@ -16,24 +19,32 @@ export const profile = {
 }
 
 export const impactMetrics = [
-  { value: '5', label: '완성 프로젝트' },
+  { value: '5', label: 'AI 과정 프로젝트' },
   { value: '118', label: 'BidMatch 기여 커밋' },
-  { value: '242', label: 'AI 자동 테스트 통과' },
+  { value: '242', label: 'AI pytest 통과' },
   { value: 'PL', label: '5인 팀 프로젝트 리딩' },
 ]
 
 export const skillGroups = [
   {
     label: 'Backend',
-    skills: ['Java 17', 'Spring Boot', 'Spring Security', 'JPA', 'Flyway', 'Flask', 'FastAPI'],
+    skills: ['Java 17', 'Spring Boot 3.5', 'Spring Security', 'Spring Data JPA', 'Flyway', 'SSE'],
   },
   {
-    label: 'AI · Data',
-    skills: ['BGE-M3', 'RAG', 'LLM', 'XGBoost', 'YOLOv8', 'LSTM', 'PostgreSQL', 'pgvector'],
+    label: 'AI Application',
+    skills: ['Python 3.12', 'FastAPI', 'BGE-M3', 'Qwen/Ollama', 'RAG', 'PyMuPDF', 'LangSmith'],
   },
   {
-    label: 'Frontend · Ops',
-    skills: ['React', 'Vite', 'Streamlit', 'Redis', 'Docker', 'Bruno', 'GitHub'],
+    label: 'Frontend',
+    skills: ['React 18', 'Vite 5', 'React Router', 'Axios', 'Streamlit'],
+  },
+  {
+    label: 'Data · Infra',
+    skills: ['PostgreSQL', 'pgvector', 'Redis', 'MariaDB', 'Supabase', 'Docker (실행·검증)'],
+  },
+  {
+    label: 'Test · Tools',
+    skills: ['JUnit 5', 'pytest', 'Bruno', 'Git/GitHub'],
   },
 ]
 
@@ -43,7 +54,7 @@ export const projects = [
     index: '01',
     featured: true,
     title: 'BidMatch',
-    subtitle: 'AI 기반 공공입찰 맞춤 추천·자격진단 서비스',
+    subtitle: 'AI 기반 공공입찰 맞춤 추천·자가 자격 진단 서비스',
     period: '2026.07.09 — 2026.08.07',
     role: 'Project Leader · Backend & AI Application',
     image: bidmatchImage,
@@ -51,19 +62,21 @@ export const projects = [
     secondaryImage: bidmatchArchitecture,
     visual: 'image',
     tone: 'green',
-    description: '나라장터 공고와 기업정보를 연결해 맞춤 추천, 근거 기반 자격진단, 알림과 고객센터를 제공하는 5인 팀 프로젝트입니다.',
+    description: '나라장터 공고와 기업정보를 연결해 맞춤 추천, 근거 기반 자가 자격 진단, 알림과 고객센터를 제공하는 5인 팀 프로젝트입니다.',
     contributions: [
       '회원·기업 인증, 기업정보·면허·실적 관리 API와 React 화면 구현',
       'FAQ RAG 챗봇의 권한 필터, LLM fallback, 민감정보 마스킹 적용',
-      'BGE-M3 검색·LLM 분류·Spring 규칙 판정을 결합한 첨부문서 자격진단 구현',
+      'BGE-M3 근거 검색·Qwen 유형 분류·Spring 규칙 판정을 결합한 첨부문서 기반 자가 자격 진단 구현',
       'REST 이력과 SSE를 결합한 사용자 실시간 알림 흐름 구현',
     ],
     challenge: '병렬 개발 중 발생한 Flyway 버전 충돌과 기존 DB 스키마 불일치를 적용 이력을 보존하는 후속 마이그레이션 방식으로 해결했습니다.',
     outcome: 'Backend 테스트, 사용자·관리자 프론트 빌드, AI pytest 242건을 최종 검증했습니다.',
-    tags: ['Spring Boot', 'FastAPI', 'React', 'PostgreSQL', 'Redis', 'BGE-M3', 'RAG'],
+    tags: ['Spring Boot', 'FastAPI', 'React', 'PostgreSQL', 'Redis', 'BGE-M3', 'Qwen/Ollama', 'RAG', 'PyMuPDF', 'Flyway', 'Docker (실행·검증)'],
     links: [
       { label: 'Project README', url: 'https://github.com/aiHuman1Team' },
       { label: 'Live Service', url: 'http://minsworkspace.ddns.net' },
+      { label: '개인 기여 요약 보기', url: reportUrl('bidmatch-personal-project-summary.pdf') },
+      { label: '최종 보고서 보기', url: reportUrl('bidmatch-final-report.pdf') },
     ],
   },
   {
@@ -86,7 +99,11 @@ export const projects = [
     challenge: '경량 LLM의 도구 호출 오류와 날짜 환각을 정규식 시간 파서, DB 결과 검증, 대형 모델 기본값으로 완화했습니다.',
     outcome: '영상 인식부터 DB 조회, 자연어 설명, 보고서 생성까지 이어지는 데이터 기반 AI 에이전트 흐름을 완성했습니다.',
     tags: ['YOLOv8', 'LSTM', 'Llama 3', 'Function Calling', 'Supabase', 'Streamlit'],
-    links: [{ label: 'GitHub', url: 'https://github.com/kjongrok/LLM' }],
+    links: [
+      { label: 'GitHub', url: 'https://github.com/kjongrok/LLM' },
+      { label: '시연 영상', url: 'https://youtu.be/dR177JPcxXM' },
+      { label: '보고서 보기', url: reportUrl('llm-report.pdf') },
+    ],
   },
   {
     id: 'traffic-anomaly',
@@ -108,7 +125,11 @@ export const projects = [
     challenge: 'LSTM 입력 차원 불일치와 영상 렌더링 지연을 입력 reshape, 프레임 스킵, 표시 영상 리사이징으로 해결했습니다.',
     outcome: '객체 탐지, 이상탐지, 시계열 예측, 클라우드 로그를 하나의 실행 화면으로 연결했습니다.',
     tags: ['TensorFlow', 'YOLOv8', 'LSTM Autoencoder', 'OpenCV', 'Supabase'],
-    links: [{ label: 'GitHub', url: 'https://github.com/kjongrok/Deep_Learning' }],
+    links: [
+      { label: 'GitHub', url: 'https://github.com/kjongrok/Deep_Learning' },
+      { label: '시연 영상', url: 'https://youtu.be/33S2lS5M61c' },
+      { label: '보고서 보기', url: reportUrl('deep-learning-report.pdf') },
+    ],
   },
   {
     id: 'flight-delay',
@@ -131,7 +152,11 @@ export const projects = [
     challenge: '높은 정확도와 낮은 지연 재현율이 함께 나타나는 Accuracy Paradox를 확인하고 Recall 중심으로 평가 기준을 전환했습니다.',
     outcome: '프로젝트 보고서 기준 지연 Recall 65%, ROC-AUC 0.785를 기록했습니다.',
     tags: ['XGBoost', 'Scikit-learn', 'Pandas', 'Streamlit', 'Feature Importance'],
-    links: [{ label: 'GitHub', url: 'https://github.com/kjongrok/Machine_Learning' }],
+    links: [
+      { label: 'GitHub', url: 'https://github.com/kjongrok/Machine_Learning' },
+      { label: '시연 영상', url: 'https://youtu.be/K5FKWHqEpRM' },
+      { label: '보고서 보기', url: reportUrl('machine-learning-report.pdf') },
+    ],
   },
   {
     id: 'bidmatch-flask',
@@ -156,7 +181,8 @@ export const projects = [
     tags: ['Flask', 'React', 'MariaDB', 'JWT', 'Gemini', 'APScheduler'],
     links: [
       { label: 'GitHub', url: 'https://github.com/kjongrok/BidMatch' },
-      { label: 'Demo', url: 'https://youtu.be/Omh36JkK0x0' },
+      { label: '시연 영상', url: 'https://youtu.be/Omh36JkK0x0' },
+      { label: '보고서 보기', url: reportUrl('flask-bidmatch-report.pdf') },
     ],
   },
 ]

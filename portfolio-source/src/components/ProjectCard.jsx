@@ -28,7 +28,7 @@ function ProjectCard({ project }) {
           <div className="tag-list">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
           <div className="project-links">
             {project.links.map((link) => <a key={link.label} href={link.url} target="_blank" rel="noreferrer">{link.label} <Icon name="external" size={15}/></a>)}
-            <button type="button" onClick={() => setExpanded((current) => !current)} aria-expanded={expanded}>{expanded ? '상세 닫기' : '기여 내용 보기'} <span>{expanded ? '−' : '+'}</span></button>
+            <button type="button" onClick={() => setExpanded((current) => !current)} aria-expanded={expanded}>{expanded ? '상세 닫기' : '프로젝트 상세 보기'} <span>{expanded ? '−' : '+'}</span></button>
           </div>
         </div>
       </div>

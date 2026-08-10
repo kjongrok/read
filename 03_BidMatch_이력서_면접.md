@@ -12,8 +12,8 @@
 
 - Backend: Java 17, Spring Boot 3.5, Spring Security, Spring Data JPA, Validation, Scheduling, SSE, Flyway
 - Frontend: React 18, Vite, React Router, Axios
-- AI: Python 3.12, FastAPI, BGE-M3, Qwen3 4B Instruct, Ollama, pgvector, PyMuPDF
-- Data·Infra 연동: PostgreSQL, Redis, Gmail SMTP, 나라장터 OpenAPI, 국세청 사업자등록정보 API
+- AI Application: Python 3.12, FastAPI, BGE-M3, Qwen3 4B Instruct, Ollama, RAG, PyMuPDF, LangSmith
+- Data·Infra 연동: PostgreSQL, pgvector, Redis, Docker(실행·검증), Gmail SMTP, 나라장터 OpenAPI, 국세청 사업자등록정보 API
 - Test·Collaboration: JUnit 5, pytest, Bruno, Git/GitHub
 
 ## 4. 이력서용 핵심 기여 문구
@@ -41,7 +41,8 @@
 
 ## 5. 수치로 말할 수 있는 근거
 
-- 개발 기간: 2026-07-15 ~ 2026-08-05
+- 공식 프로젝트 기간: 2026-07-09 ~ 2026-08-07
+- Git으로 확인된 본인 기여 기간: 2026-07-15 ~ 2026-08-05
 - 본인 비병합 커밋: 5개 저장소 합계 118건
 - 저장소별: Backend 42, User Frontend 38, AI 8, Admin Frontend 2, Bruno 28
 - AI 자동 테스트: 242건 통과
