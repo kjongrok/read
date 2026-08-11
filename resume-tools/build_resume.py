@@ -11,8 +11,8 @@ from docx.shared import Cm, Pt, RGBColor
 from docx.text.run import Run
 
 
-ROOT = Path(__file__).resolve().parents[2]
-OUTPUT_DIR = ROOT / "read" / "output"
+ROOT = Path(__file__).resolve().parents[1]
+OUTPUT_DIR = ROOT / "output"
 OUTPUT_PATH = OUTPUT_DIR / "김종록_백엔드_AI응용개발자_이력서.docx"
 
 NAVY = "13283F"
@@ -260,14 +260,6 @@ def add_header(document):
     add_hyperlink(contact, "xhxhahs2@gmail.com", "mailto:xhxhahs2@gmail.com", size=8.7, color=GRAY)
     style_run(contact.add_run("  |  경기 하남시"), size=8.7, color=GRAY)
 
-    links = document.add_paragraph()
-    links.paragraph_format.space_after = Pt(7)
-    links.paragraph_format.line_spacing = 1.0
-    style_run(links.add_run("Portfolio  "), size=8.7, bold=True, color=NAVY)
-    add_hyperlink(links, "kjongrok.github.io", "https://kjongrok.github.io/", size=8.7, bold=True, color=TEAL)
-    style_run(links.add_run("  |  GitHub  "), size=8.7, bold=True, color=NAVY)
-    add_hyperlink(links, "github.com/kjongrok", "https://github.com/kjongrok", size=8.7, bold=True, color=TEAL)
-
     rule = document.add_paragraph()
     rule.paragraph_format.space_after = Pt(6)
     p_pr = rule._p.get_or_add_pPr()
@@ -379,11 +371,11 @@ def add_skill_table(document):
         문서에 2열 기술 분류 표를 추가합니다.
     """
     rows = [
-        ("Backend", "Java 17 · Spring Boot 3.5 · Spring Security · Spring Data JPA · Flyway · SSE"),
-        ("AI Application", "Python 3.12 · FastAPI · BGE-M3 · Qwen/Ollama · RAG · PyMuPDF · LangSmith"),
+        ("Backend", "Java 17 · Spring Boot 3.5 · Spring Security · Spring Data JPA · MyBatis · SSE"),
+        ("AI · ML/DL", "Python 3.12 · FastAPI · scikit-learn · TensorFlow/Keras · PyTorch · YOLOv8 · RAG · BGE-M3 · Qwen/Ollama"),
         ("Frontend", "React 18 · Vite 5 · React Router · Axios · Streamlit"),
         ("Data · Infra", "PostgreSQL · pgvector · Redis · MariaDB · Supabase · Docker(실행·검증)"),
-        ("Test · Tools", "JUnit 5 · pytest · Bruno · Git/GitHub"),
+        ("Test · Collaboration", "JUnit 5 · pytest · Bruno · Git/GitHub · GitHub Actions · Jira · Slack"),
     ]
     table = document.add_table(rows=len(rows), cols=2)
     table.alignment = WD_TABLE_ALIGNMENT.CENTER
@@ -488,17 +480,38 @@ def build_resume():
     add_section_title(document, "PROFILE")
     add_body_paragraph(
         document,
-        "사용자의 실제 업무 흐름을 이해하고 백엔드의 안정성과 AI의 활용 가능성을 하나의 서비스로 연결하는 개발자입니다. "
-        "병원 전산 운영 3년 11개월의 사용자 지원 경험을 바탕으로, Spring Boot API와 React 화면을 구현하고 "
-        "FastAPI·RAG·Qwen 기능을 서비스 경계 안에서 검증 가능한 형태로 연결했습니다.",
-        size=9.25,
-        space_after=3.5,
+        "병원 전산 운영 3년 11개월 동안 여러 진료·행정부서의 장애에 대응하고 사용자 요청을 처리하며, 문제를 단순 증상이 아닌 업무 흐름과 시스템 구조의 관점에서 파악하는 경험을 쌓았습니다.",
+        size=9.1,
+        space_after=2.2,
     )
+    add_body_paragraph(
+        document,
+        "이후 Spring Boot 기반 Backend와 React 화면을 구현하고, 머신러닝·딥러닝 모델 개발과 LLM 에이전트·RAG 챗봇 구현을 경험했습니다. 5인 팀 PL로 참여한 BidMatch에서는 FastAPI AI 기능을 Backend 규칙, 응답 검증과 대체 처리로 보완하고 AI 자동화 테스트 242건을 통과했습니다.",
+        size=9.1,
+        space_after=2.2,
+    )
+    add_body_paragraph(
+        document,
+        "운영 환경에 대한 이해를 바탕으로 AI 기능을 안정적인 Backend 서비스에 연결하고, 예외 상황에서도 사용자가 신뢰할 수 있는 결과를 제공하는 개발자로 성장하고 있습니다.",
+        size=9.1,
+        space_after=2.0,
+    )
+
+    links = document.add_paragraph()
+    links.paragraph_format.space_after = Pt(4)
+    links.paragraph_format.line_spacing = 1.0
+    add_hyperlink(links, "Portfolio", "https://kjongrok.github.io/", size=8.7, bold=True, color=TEAL)
+    style_run(links.add_run("  |  "), size=8.7, color=GRAY)
+    add_hyperlink(links, "GitHub", "https://github.com/kjongrok", size=8.7, bold=True, color=TEAL)
+    style_run(links.add_run("  |  "), size=8.7, color=GRAY)
+    add_hyperlink(links, "BidMatch Project", "https://github.com/aiHuman1Team", size=8.7, bold=True, color=TEAL)
+    style_run(links.add_run("  |  "), size=8.7, color=GRAY)
+    add_hyperlink(links, "BidMatch Service", "http://minsworkspace.ddns.net", size=8.7, bold=True, color=TEAL)
 
     add_section_title(document, "CORE COMPETENCIES")
     add_bullet(document, "Spring Boot 기반 인증·회원·기업정보·고객센터·알림 API와 React 사용자 흐름 구현")
-    add_bullet(document, "FastAPI·BGE-M3·Qwen·Spring 규칙 판정을 분리한 근거 기반 RAG 기능 설계")
-    add_bullet(document, "Flyway 충돌, 외부 API 장애, 비정상 AI 출력에 대한 검증, fallback과 상태 관리 적용")
+    add_bullet(document, "정형 데이터 ML, 영상·시계열 DL 모델 개발과 LLM 에이전트·RAG 챗봇 구현")
+    add_bullet(document, "BGE-M3 검색·Qwen 분류와 Spring 규칙 판정을 분리하고 검증·fallback 적용")
     add_bullet(document, "5인 팀 프로젝트 리더(PL)로 API 계약, 기능 범위, 테스트와 시연 자료를 조율")
 
     add_section_title(document, "TECHNICAL SKILLS")
@@ -506,19 +519,25 @@ def build_resume():
 
     add_section_title(document, "WORK EXPERIENCE")
     add_entry_heading(document, "㈜시스게이트 · 한림대학교의료원(강동) 전산 운영", "2019.08 – 2023.06 · OA 운영 및 사용자 지원")
-    add_bullet(document, "30개 이상 부서의 OA 시스템 요구사항을 수집하고 하드웨어·소프트웨어 구성 검토와 도입 지원")
-    add_bullet(document, "연간 300건 이상의 장애·사용자 요청을 처리하고 운영 매뉴얼, 정책, Q&A 대응 체계 정리")
-    add_bullet(document, "신규 시스템 도입과 개편 과정에서 비IT 직군 대상 교육 자료를 제작하고 40회 이상 교육 진행")
-    add_bullet(document, "코로나19 기간 전자결재·원격 OA 접근 체계 전환 과정에서 사용자 안내와 장애 대응 지원")
+    add_body_paragraph(document, "담당 업무", size=8.5, color=TEAL, space_after=0.5)
+    add_bullet(document, "병원 내 여러 진료·행정부서의 OA 요구사항 수집, 시스템 구성 검토와 도입 지원", size=8.6)
+    add_bullet(document, "장애·사용자 요청 대응, 신규 시스템 교육 자료 제작과 사용자 교육 진행", size=8.6)
+    add_body_paragraph(document, "경험 및 직무 연결점", size=8.5, color=TEAL, space_after=0.5)
+    add_bullet(document, "반복 문의를 운영 매뉴얼·정책·Q&A 대응 체계로 정리하고 원격 OA 전환 지원", size=8.6)
+    add_bullet(document, "사용자 업무와 영향 범위를 고려해 원인을 좁히는 경험을 개발의 예외 처리·운영 관점으로 확장", size=8.6)
 
     add_section_title(document, "EDUCATION")
     add_entry_heading(document, "휴먼AI교육센터 · 심화_인공지능(AI) 서비스 기반 웹 개발자 심화 프로젝트", "2026.06.11 – 2026.08.11")
-    add_body_paragraph(document, "머신러닝·딥러닝·LLM 응용 기능과 Spring Boot·FastAPI 기반 웹 서비스를 단계별 프로젝트로 구현", size=8.8)
     add_entry_heading(document, "KG IT BANK · 핀테크 서비스를 위한 풀스택 개발자 양성 과정", "2024.08.05 – 2025.02.13")
-    add_body_paragraph(document, "Java, Spring Boot, SQL, JavaScript 기반 웹 서비스 설계와 팀 프로젝트 수행", size=8.8)
     add_entry_heading(document, "여주대학교 · 컴퓨터정보과", "2016.03 – 2020.02 · 졸업")
 
     document.add_page_break()
+
+    add_section_title(document, "AI EDUCATION HIGHLIGHTS")
+    add_bullet(document, "scikit-learn 기반 데이터 전처리·모델 비교와 불균형 데이터 평가")
+    add_bullet(document, "YOLOv8·LSTM 기반 객체 탐지, 이상탐지와 시계열 예측 모델 개발")
+    add_bullet(document, "LLM Function Calling·RAG 챗봇과 응답 검증·fallback 구현")
+    add_bullet(document, "Spring Boot·FastAPI·React 기반 Backend·AI·사용자 화면 연동")
 
     add_section_title(document, "SELECTED PROJECTS")
     add_entry_heading(document, "BidMatch · AI 기반 공공입찰 맞춤 추천·자가 자격 진단 서비스", "2026.07.09 – 2026.08.07 · 5인 팀 PL")
@@ -533,36 +552,34 @@ def build_resume():
     add_bullet(document, "React 사용자 화면을 연동하고 Bruno 요청으로 Backend·AI API 계약과 예외 응답 검증")
     add_bullet(document, "FAQ RAG 챗봇에 역할별 검색, 낮은 유사도 차단, 다중 의도, LLM fallback과 민감정보 마스킹 적용")
     add_bullet(document, "BGE-M3 근거 검색과 Qwen 유형 분류 결과를 Spring 규칙 판정으로 재검증하는 자가 자격 진단 구조 설계")
-    add_bullet(document, "병렬 개발 중 Flyway 버전·체크섬·레거시 스키마 충돌을 적용 이력을 보존하는 후속 마이그레이션으로 해결")
-    add_bullet(document, "5개 저장소 118개 비병합 커밋 기여, AI pytest 242건, Backend 테스트, 사용자·관리자 Frontend 빌드 통과")
-    add_body_paragraph(document, "기술: Spring Boot · FastAPI · React · PostgreSQL · Redis · BGE-M3 · Qwen/Ollama · RAG · PyMuPDF · Flyway · Docker(실행·검증)", size=8.2, color=TEAL, space_after=2.0)
+    add_bullet(document, "병렬 개발 중 DB 마이그레이션(Flyway) 버전·체크섬·스키마 충돌을 기존 이력을 보존한 후속 마이그레이션으로 해결")
+    add_bullet(document, "5개 저장소 118개 비병합 커밋 기여, AI 자동화 테스트 242건, Backend 테스트, 사용자·관리자 Frontend 빌드 통과")
+    add_body_paragraph(document, "기술: Spring Boot · FastAPI · React · PostgreSQL · Redis · BGE-M3 · Qwen/Ollama · RAG · PyMuPDF · Docker(실행·검증)", size=8.2, color=TEAL, space_after=2.0)
 
     add_entry_heading(document, "지능형 교통 관제 시스템", "2026.07.02 – 2026.07.07 · 개인")
     add_bullet(document, "YOLOv8 차량 탐지 결과와 Supabase 로그 조회를 LLM Function Calling으로 연결")
     add_bullet(document, "날짜 환각과 도구 호출 오류를 시간 파서·DB 결과 검증·대체 모델 경로로 완화하고 Word 관제 일지 생성")
+    add_body_paragraph(document, "기술: Python · YOLOv8 · Supabase · LLM Function Calling · Streamlit · python-docx", size=8.0, color=TEAL, space_after=1.0)
 
     add_entry_heading(document, "CCTV 교통량 이상탐지·예측", "2026.06.25 – 2026.07.01 · 개인")
     add_bullet(document, "YOLOv8 탐지, LSTM Autoencoder 이상탐지, ITS CCTV, Supabase 로그를 Streamlit 화면으로 통합")
     add_bullet(document, "입력 차원 불일치와 영상 지연을 reshape, 프레임 스킵, 표시 영상 리사이징으로 해결")
+    add_body_paragraph(document, "기술: Python · YOLOv8 · TensorFlow/Keras · LSTM Autoencoder · Supabase · Streamlit", size=8.0, color=TEAL, space_after=1.0)
 
     add_entry_heading(document, "항공편 지연 예측", "2026.06.18 – 2026.06.24 · 개인")
     add_bullet(document, "약 25만 건 데이터를 전처리하고 XGBoost 등 모델을 비교해 불균형 데이터의 지연 Recall 중심으로 평가")
     add_bullet(document, "전처리·모델을 scikit-learn Pipeline으로 패키징해 Streamlit에 연결, 프로젝트 보고서 기준 Recall 65%·ROC-AUC 0.785 기록")
+    add_body_paragraph(document, "기술: Python · pandas · scikit-learn · XGBoost · Pipeline · Streamlit", size=8.0, color=TEAL, space_after=1.0)
 
     add_entry_heading(document, "맞춤 공고 자동 수집·메일 알림 프로토타입", "2026.06.11 – 2026.06.17 · 팀 PL")
     add_bullet(document, "Flask·React로 OAuth/JWT 인증, Gmail 알림, Gemini 공고 요약, APScheduler 배치를 연결")
     add_bullet(document, "UTC/KST 발송 시간 차이를 Asia/Seoul 기준으로 보정하고 최종 Spring·FastAPI 프로젝트로 구조 확장")
+    add_body_paragraph(document, "기술: Flask · React · OAuth/JWT · Gmail SMTP · Gemini · APScheduler", size=8.0, color=TEAL, space_after=1.0)
 
     add_entry_heading(document, "Spike · Spring Boot 기반 금융 서비스", "2025.01 – 2025.02 · 팀 프로젝트")
     add_bullet(document, "Spring Security와 BCrypt를 적용한 회원가입·로그인, 역할별 접근 제어와 마이페이지 구현")
     add_bullet(document, "관리자 사용자 CRUD·페이징과 보이스피싱 의심 계좌 신고·검토·상태 변경 흐름 구현")
     add_body_paragraph(document, "기술: Java 17 · Spring Boot 2.7 · JSP · JPA · MyBatis · Oracle DB", size=8.2, color=TEAL, space_after=2.0)
-
-    add_section_title(document, "PORTFOLIO")
-    add_portfolio_link(document, "Portfolio", "https://kjongrok.github.io/", size=8.8)
-    add_portfolio_link(document, "GitHub", "https://github.com/kjongrok", size=8.8)
-    add_portfolio_link(document, "BidMatch Project", "https://github.com/aiHuman1Team")
-    add_portfolio_link(document, "BidMatch Service", "http://minsworkspace.ddns.net")
 
     add_page_number(document.sections[0])
     document.save(OUTPUT_PATH)
